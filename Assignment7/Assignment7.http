@@ -1,0 +1,12 @@
+@WebApiHost = http://localhost:5555
+
+###
+GET {{{WebApiHost}}}/
+###
+GET {{WebApiHost}}/
+###
+POST {{WebApiHost}}/
+###
+PUT {{WebApiHost}}/
+###
+DELETE {{WebApiHost}}/
