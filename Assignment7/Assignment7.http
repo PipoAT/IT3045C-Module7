@@ -15,12 +15,15 @@ Content-Type: application/json
 }
 
 ###
-PUT {{WebApiHost}}/people
+PUT {{WebApiHost}}/people/1
 Content-Type: application/json
 
 {
-
+    "personId": 1,
+    "firstName": "Andrew",
+    "lastName": "Pipo",
+    "nickName": "Hippo"
 }
 
 ###
-DELETE {{WebApiHost}}/
+DELETE {{WebApiHost}}/people/1

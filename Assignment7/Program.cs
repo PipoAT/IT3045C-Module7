@@ -42,13 +42,23 @@ app.MapPost("/people", async (Person person, PersonDbContext dbContext) =>
     //return Results.Created($"/people/{person.PersonID}", person);
 });
 
-app.MapPut("/people", async (Person person, PersonDbContext dbContext) =>
+app.MapPut("/people/{personID}", async (int personID, Person person, PersonDbContext dbContext) =>
 {
-    dbContext.People.Update(person);
+    if (personID != person.PersonID) {
+        return Results.BadRequest("Person ID mismatch");
+    }
+
+    dbContext.Entry(person).State = EntityState.Modified;
     await dbContext.SaveChangesAsync();
 
-    return person;
-    //return Results.Created($"/people/{person.PersonID}", person);
+    return Results.NoContent();
+});
+
+app.MapDelete("/people/{personID}", async (int personID, PersonDbContext dbContext) =>
+{
+    dbContext.People.Remove( new Person { PersonID = personID } );
+    await dbContext.SaveChangesAsync();
+
 });
 
 app.Run();
