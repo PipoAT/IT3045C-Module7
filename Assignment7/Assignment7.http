@@ -1,12 +1,26 @@
 @WebApiHost = http://localhost:5555
 
 ###
-GET {{{WebApiHost}}}/
+GET {{{WebApiHost}}}/people
 ###
-GET {{WebApiHost}}/
+GET {{WebApiHost}}/people/1
 ###
-POST {{WebApiHost}}/
+POST {{WebApiHost}}/people
+Content-Type: application/json
+
+{
+    "firstName": "Andrew",
+    "lastName": "Pipo",
+    "nickName": "Pipo"
+}
+
 ###
-PUT {{WebApiHost}}/
+PUT {{WebApiHost}}/people
+Content-Type: application/json
+
+{
+
+}
+
 ###
 DELETE {{WebApiHost}}/
